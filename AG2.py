@@ -1,20 +1,17 @@
-import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report
+from sklearn.tree import DecisionTreeClassifier
+import pandas as pd
 
 dados = pd.read_csv("AG2\dados\palmerpenguins.csv")
 
 island = {'Biscoe': 0, 'Dream': 1, 'Torgersen': 2}
-coluna_island = 'island'
 sex = {'FEMALE': 0, 'MALE': 1}
-coluna_sex = 'sex'
 species = {'Adeline': 0, 'Adelie': 0, 'Chinstrap': 1, 'Gentoo': 2}
-coluna_species = 'species'
 
-dados[coluna_island] = dados[coluna_island].replace(island)
-dados[coluna_sex] = dados[coluna_sex].replace(sex)
-dados[coluna_species] = dados[coluna_species].replace(species)
+dados['island'] = dados['island'].replace(island)
+dados['sex'] = dados['sex'].replace(sex)
+dados['species'] = dados['species'].replace(species)
 
 dados = dados.reindex(columns=['island', 'sex', 'culmen_length_mm', 'culmen_depth_mm', 'flipper_length_mm', 'body_mass_g', 'species'])
 dados.to_csv("AG2\dados\palmerpenguins.csv", index=False)
@@ -29,12 +26,13 @@ modelo.fit(X_train, y_train)
 acuracia = modelo.score(X_test, y_test)
 print(f"Acurácia do modelo: {acuracia:.2f}")
 
-y_pred = modelo.predict(X_test)
+predict = modelo.predict(X_test)
 
-relatorio_classificacao = classification_report(y_test, y_pred, target_names=['Adelie', 'Chinstrap', 'Gentoo'])
+relatorio_classificacao = classification_report(y_test, predict, target_names=['Adelie', 'Chinstrap', 'Gentoo'])
 print("Relatório de Classificação:\n", relatorio_classificacao)
 
 def classificar_novos_dados(modelo):
+
     print("Insira os seguintes dados para classificação:")
     island = int(input("Ilha (0 para Biscoe, 1 para Dream, 2 para Torgersen): "))
     sex = int(input("Sexo (0 para FEMALE, 1 para MALE): "))
@@ -49,8 +47,7 @@ def classificar_novos_dados(modelo):
     
     predicao = modelo.predict(novos_dados)
     especies = {0: 'Adelie', 1: 'Chinstrap', 2: 'Gentoo'}
-    resultado = especies[predicao[0]]
-    
-    print(f"A previsão do modelo é que o pinguim pertence à espécie: {resultado}")
+
+    print(f"A previsão do modelo é que o pinguim pertence à espécie: {especies[predicao[0]]}")
 
 classificar_novos_dados(modelo)
