@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report
 
-dados = pd.read_csv("AG2\dados\palmerpenguins.csv")
+dados = pd.read_csv("AG2/dados/palmerpenguins.csv")
 
 island = {'Biscoe': 0, 'Dream': 1, 'Torgersen': 2}
 coluna_island = 'island'
