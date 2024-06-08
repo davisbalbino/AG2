@@ -3,7 +3,7 @@ from sklearn.metrics import classification_report
 from sklearn.tree import DecisionTreeClassifier
 import pandas as pd
 
-dados = pd.read_csv("AG2\dados\palmerpenguins.csv")
+dados = pd.read_csv("dados\palmerpenguins_origin.csv")
 
 island = {'Biscoe': 0, 'Dream': 1, 'Torgersen': 2}
 sex = {'FEMALE': 0, 'MALE': 1}
@@ -14,7 +14,7 @@ dados['sex'] = dados['sex'].replace(sex)
 dados['species'] = dados['species'].replace(species)
 
 dados = dados.reindex(columns=['island', 'sex', 'culmen_length_mm', 'culmen_depth_mm', 'flipper_length_mm', 'body_mass_g', 'species'])
-dados.to_csv("AG2\dados\palmerpenguins.csv", index=False)
+dados.to_csv("dados\palmerpenguins.csv", index=False)
 
 X = dados.drop(columns=['species'])  # Recursos (features)
 y = dados['species']
