@@ -26,8 +26,8 @@ Uma função é definida para classificar novos dados inseridos pelo usuário, e
 Ao executar o script, você verá a acurácia do modelo nos dados de teste e um relatório de classificação. Também poderá inserir novos dados para prever a espécie de pinguins.
 
 ### Autores:
-Davi dos Santos Balbino Marcelino - - GES
+Davi dos Santos Balbino Marcelino - 68 - GES
 
 Vinicius Batista Ribas - 1508 - GEC
 
-## Link do Videos:
+## Link do Video:
